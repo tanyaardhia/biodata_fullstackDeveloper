@@ -8,5 +8,6 @@ admin.get(
   adminAuthorization,
   AdminController.AdminGetDatabase
 );
+admin.get("/admin/database/:id", adminAuthorization, AdminController.getDataUserById)
 
 module.exports = admin;
