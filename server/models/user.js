@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           isIn: {
             args: [["user", "admin"]],
-            msg: "Invalid Role",
+            msg: "Role must be either 'user' or 'admin'",
           },
         },
       },
@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
   User.beforeCreate(async (user, options) => {
     const hashedPassword = hashPassword(user.password);
     user.password = hashedPassword;
-    user.role = "user";
+    // user.role = "user";
   });
 
   return User;

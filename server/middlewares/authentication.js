@@ -10,14 +10,14 @@ async function authentication(req, res, next) {
 
     if (!access_token) {
       // console.log("masok 1");
-      throw { name: "InvalidToken" };
+      throw { message: "InvalidToken" };
     }
     // console.log("masuk a");
     
 
     if (access_token.slice(0, 7) !== "Bearer ") {
       // console.log("masok 2");
-      throw { name: "InvalidToken" };
+      throw { message: "InvalidToken" };
     }
 
     access_token = access_token.slice(7);
