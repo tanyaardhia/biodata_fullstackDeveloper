@@ -9,5 +9,6 @@ admin.get(
   AdminController.AdminGetDatabase
 );
 admin.get("/admin/database/:id", adminAuthorization, AdminController.getDataUserById)
+admin.put("/admin/database/edit/:id", adminAuthorization, AdminController.updateDatabaseById)
 
 module.exports = admin;
