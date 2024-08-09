@@ -3,14 +3,17 @@ const { User } = require("../models");
 
 async function authentication(req, res, next) {
   try {
-    console.log(req.headers, "req heade authen");
+    // console.log(req.headers, "req heade authen");
     let access_token = req.headers.authorization;
-    console.log(access_token, "authen nih");
+    // console.log(access_token, "authen nih");
+    // console.log("masuk b");
 
     if (!access_token) {
       console.log("masok 1");
       throw { name: "InvalidToken" };
     }
+    console.log("masuk a");
+    
 
     if (access_token.slice(0, 7) !== "Bearer ") {
       console.log("masok 2");
@@ -18,9 +21,11 @@ async function authentication(req, res, next) {
     }
 
     access_token = access_token.slice(7);
+    console.log(access_token, ">>> bearer");
+    
     let payload = verifyToken(access_token);
     // console.log(payload, "authen");
-    
+
     let user = await User.findByPk(payload.id);
     // console.log(user,"user nic");
 
@@ -28,6 +33,8 @@ async function authentication(req, res, next) {
       console.log("masok 3");
       throw { name: "InvalidToken" };
     }
+    
+    // console.log("masuk e");
 
     req.user = { id: user.id, role: user.role };
     console.log(req.user);
