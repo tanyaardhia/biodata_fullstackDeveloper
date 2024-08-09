@@ -2,7 +2,7 @@ const { comparePassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 const { User } = require("../models");
 
-class Contoller {
+class AuthContoller {
   static async register(req, res) {
     try {
       const { email, password } = req.body;
@@ -79,4 +79,4 @@ class Contoller {
   }
 }
 
-module.exports = Contoller;
+module.exports = AuthContoller;
