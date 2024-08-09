@@ -1,7 +1,12 @@
+const { Biodata } = require("../models");
+
 class AdminController {
   static async AdminGetDatabase(req, res) {
     try {
-      res.send("adminnn");
+      const formulirDatabase = await Biodata.findAll();
+      console.log(formulirDatabase, ">> get all dr admin controller");
+
+      res.status(200).json(formulirDatabase);
     } catch (error) {
       console.log(error, ">> FormulirKaryawan controller");
       if (error.code && error.message) {

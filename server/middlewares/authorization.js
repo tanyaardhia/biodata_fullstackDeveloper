@@ -5,14 +5,14 @@ async function authorization(req, res, next) {
     const { id } = req.params;
     const biodata = await Biodata.findByPk(id);
 
-    if (!biodata) throw { name: "Not Found" };
+    if (!biodata) throw { message: "Not Found" };
 
-    if (req.user.role === "Admin") {
+    if (req.user.role === "admin") {
       next();
     } else {
         console.log(">>> masuk authorization");
       if (req.user.id !== biodata.userId) {
-        throw { name: "Forbidden" };
+        throw { message: "Forbidden" };
       } else {
         next();
       }

@@ -4,7 +4,7 @@ const adminAuthorization = require("../middlewares/adminAuthorization");
 const admin = express.Router();
 
 admin.get(
-  "/admin/database",
+  "/admin/database", 
   adminAuthorization,
   AdminController.AdminGetDatabase
 );

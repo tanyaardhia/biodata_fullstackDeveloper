@@ -31,7 +31,7 @@ async function authentication(req, res, next) {
 
     if (!user) {
       // console.log("masok 3");
-      throw { name: "InvalidToken" };
+      throw { message: "InvalidToken" };
     }
 
     // console.log("masuk e");
