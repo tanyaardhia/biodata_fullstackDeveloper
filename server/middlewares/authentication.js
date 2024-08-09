@@ -9,19 +9,19 @@ async function authentication(req, res, next) {
     // console.log("masuk b");
 
     if (!access_token) {
-      console.log("masok 1");
+      // console.log("masok 1");
       throw { name: "InvalidToken" };
     }
-    console.log("masuk a");
+    // console.log("masuk a");
     
 
     if (access_token.slice(0, 7) !== "Bearer ") {
-      console.log("masok 2");
+      // console.log("masok 2");
       throw { name: "InvalidToken" };
     }
 
     access_token = access_token.slice(7);
-    console.log(access_token, ">>> bearer");
+    // console.log(access_token, ">>> bearer");
     
     let payload = verifyToken(access_token);
     // console.log(payload, "authen");
@@ -30,14 +30,14 @@ async function authentication(req, res, next) {
     // console.log(user,"user nic");
 
     if (!user) {
-      console.log("masok 3");
+      // console.log("masok 3");
       throw { name: "InvalidToken" };
     }
-    
+
     // console.log("masuk e");
 
     req.user = { id: user.id, role: user.role };
-    console.log(req.user);
+    // console.log(req.user);
 
     next();
   } catch (error) {
