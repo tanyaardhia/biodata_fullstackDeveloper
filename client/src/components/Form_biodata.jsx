@@ -1,3 +1,5 @@
+import ButtonLogout from "./ButtonLogout";
+
 export default function Form_biodata({
   register,
   handleSubmit,
@@ -13,9 +15,11 @@ export default function Form_biodata({
   workFields,
   appendWork,
   removeWork,
+  showSuccess,
 }) {
   return (
     <>
+    < ButtonLogout/>
       <div className="flex flex-col items-center mt-10">
         <img
           src="/logo.png"
@@ -27,7 +31,7 @@ export default function Form_biodata({
           Applicant Personal Data
         </h1>
 
-        <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-8">
+        <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8">
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* posisi */}
             <div className="mb-6">
@@ -414,7 +418,10 @@ export default function Form_biodata({
                 htmlFor="Education"
                 className="block text-lg font-medium text-[#07074D] mb-2"
               >
-                Education
+                Education{" "}
+                <span className="text-sm italic text-slate-400">
+                  (if you don't have any, please field "NONE")
+                </span>
               </label>
               <table className="w-full border border-[#e0e0e0]">
                 <thead>
@@ -511,7 +518,10 @@ export default function Form_biodata({
                 htmlFor="Trainings"
                 className="block text-lg font-medium text-[#07074D] mb-2"
               >
-                Training / Course
+                Training / Course{" "}
+                <span className="text-sm italic text-slate-400">
+                  (if you don't have any, please field "NONE")
+                </span>
               </label>
               <table className="w-full border border-[#e0e0e0]">
                 <thead>
@@ -586,7 +596,10 @@ export default function Form_biodata({
                 htmlFor="WorkExperiences"
                 className="block text-lg font-medium text-[#07074D] mb-2"
               >
-                Work Experience
+                Work Experience{" "}
+                <span className="text-sm italic text-slate-400">
+                  (if you don't have any, please field "NONE")
+                </span>
               </label>
               <table className="w-full border border-[#e0e0e0]">
                 <thead>
@@ -780,6 +793,7 @@ export default function Form_biodata({
             <div className="flex justify-center mt-8">
               <button
                 type="submit"
+                onClick={showSuccess}
                 disabled={isSubmitting}
                 className="w-full bg-[#6A64F1] text-white py-3 px-4 rounded-md hover:bg-[#4a4c9d] disabled:bg-[#9e9e9e]"
               >

@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Form_biodata from "../components/Form_biodata";
 import { useFieldArray, useForm } from "react-hook-form";
 import axios from "axios";
+import { Toast } from "primereact/toast";
 
 export default function FormBiodata() {
+  const toast = useRef(null);
   const navigate = useNavigate();
   const {
     register,
@@ -71,14 +73,28 @@ export default function FormBiodata() {
           },
         }
       );
-      
 
       console.log("Response formulir >>", formulirBiodata);
+
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Successfully submitted Formulir!",
+        life: 3000,
+      });
+
+      
     } catch (error) {
       console.error(
-        "Terjadi kesalahan formulir >>",
+        "error formulir >>",
         error.response?.data || error.message || error
       );
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Failed Sent Formulir, Please try again!",
+        life: 3000,
+      });
     }
   };
 
@@ -91,6 +107,8 @@ export default function FormBiodata() {
 
   return (
     <>
+      {" "}
+      <Toast ref={toast} />
       <Form_biodata
         register={register}
         control={control}
