@@ -4,6 +4,7 @@ import Login from "./views/Login";
 import RegisterUser from "./views/Register-user";
 import RegisterAdmin from "./views/RegisterAdmin";
 import FormBiodata from "./views/FormBiodata";
+import DatabaseUser from "./views/DatabaseUser";
 
 export const router = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/form-biodata",
     element: <FormBiodata />,
+  },
+  {
+    path: "/admin/database",
+    element: <DatabaseUser />,
   },
 ]);

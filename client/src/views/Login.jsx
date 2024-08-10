@@ -24,14 +24,19 @@ export default function Login() {
           password: data.password,
         }
       );
-      // console.log("login successful >>", responseLoginUser.data);
+      console.log("login successful >>", responseLoginUser.data);
+      console.log("id >>", responseLoginUser.data.id);
 
       // console.log("access_token >>", responseLoginUser.data.access_token);
       localStorage.setItem("access_token", responseLoginUser.data.access_token);
-
       localStorage.setItem("id", responseLoginUser.data.id);
+      localStorage.setItem("role", responseLoginUser.data.role);
 
-      navigate("/form-biodata");
+      if (responseLoginUser.data.role === "admin") {
+        navigate("/admin/database");
+      } else {
+        navigate("/form-biodata");
+      }
     } catch (error) {
       console.error("Login failed:", error);
     }

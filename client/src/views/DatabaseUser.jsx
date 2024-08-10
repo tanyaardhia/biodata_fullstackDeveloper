@@ -1,22 +1,20 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function FormBiodata() {
+export default function DatabaseUser() {
   const navigate = useNavigate();
 
   useEffect(() => {
     const role = localStorage.getItem("role");
-    if (role !== "user") {
-      navigate("/login");
+    if (role !== "admin") {
+      navigate("/login"); 
     }
   }, [navigate]);
-
-    return (
-      <>
-        <div>
-          {/* <h1>FormBiodata</h1> */}
-        </div>
-      </>
-    );
-  }
-  
+  return (
+    <>
+      <div>
+        {/* <h1>DatabaseUser</h1> */}
+      </div>
+    </>
+  );
+}
