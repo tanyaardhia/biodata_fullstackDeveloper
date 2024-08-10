@@ -18,7 +18,7 @@ export default function RegisterUser() {
         "http://localhost:3000/register",
         data
       );
-      console.log(responseRegisterUser, ">> data reg user");
+      // console.log(responseRegisterUser, ">> data reg user");
       navigate("/login");
     } catch (error) {
       console.log(error, "error register user");
@@ -31,6 +31,7 @@ export default function RegisterUser() {
       onSubmit={onSubmit}
       errors={errors}
       title="REGISTER"
+      subTitle="please create your account"
       isSubmitting={isSubmitting}
     />
   );

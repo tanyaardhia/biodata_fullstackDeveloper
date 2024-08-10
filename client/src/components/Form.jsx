@@ -5,6 +5,7 @@ export default function Form({
   errors,
   isSubmitting,
   title,
+  subTitle,
 }) {
   return (
     <>
@@ -16,6 +17,7 @@ export default function Form({
                 <h1 className="mx-10 font-bold dark:text-gray-400 text-3xl text-center cursor-default">
                   {title}
                 </h1>
+                <h1 className="">{subTitle}</h1>
               </div>
 
               <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>

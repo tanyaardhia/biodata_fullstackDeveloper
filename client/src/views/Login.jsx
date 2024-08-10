@@ -44,6 +44,7 @@ export default function Login() {
       onSubmit={onSubmit}
       errors={errors}
       isSubmitting={isSubmitting}
+      subTitle="welcome back"
       title="LOG IN"
     />
   );
