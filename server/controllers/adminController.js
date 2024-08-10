@@ -1,4 +1,5 @@
 const { Biodata, Education, Training, WorkExperience } = require("../models");
+const { Op } = require('sequelize');
 
 class AdminController {
   static async AdminGetDatabase(req, res) {
@@ -38,7 +39,7 @@ class AdminController {
   static async getDataUserById(req, res) {
     try {
       const { id } = req.params;
-      console.log(id, ">> get Id dari Admin Controller");
+      // console.log(id, ">> get Id dari Admin Controller");
 
       const databaseById = await Biodata.findByPk(id, {
         include: [
@@ -59,7 +60,7 @@ class AdminController {
       }
       res.status(200).json(databaseById);
     } catch (error) {
-      console.log(error, ">> getDataUserById controller");
+      console.log(error, ">> getDataUserBy Id controller");
       if (error.code && error.message) {
         res.status(error.code).json({ message: error.message });
       } else if (
@@ -206,6 +207,47 @@ class AdminController {
       res.status(200).json({ message: `formulir Deleted Successfully` });
     } catch (error) {
       console.log(error, ">> deleteDatabaseById controller");
+      if (error.code && error.message) {
+        res.status(error.code).json({ message: error.message });
+      } else if (
+        error.name === "SequelizeUniqueConstraintError" ||
+        error.name === "SequelizeValidationError"
+      ) {
+        res.status(400).json({ message: error.errors[0].message });
+      } else {
+        res.status(500).json({ message: "Internal server error" });
+      }
+    }
+  }
+
+  static async searchDatabaseByName(req, res) {
+    try {
+      const { name } = req.query;
+      // console.log(name, ">> search By Name dari admin controller");
+
+      const databaseFormulir = await Biodata.findAll({
+        where: {
+          name: {
+            [Op.iLike]: `%${name}%`,
+          },
+        },
+        include: [
+          { model: Education },
+          { model: Training },
+          { model: WorkExperience },
+        ],
+      });
+      
+
+      // console.log(databaseFormulir, ">> Search");
+
+      if (databaseFormulir.length === 0) {
+        throw { code: 404, message: "Database not found" };
+      }
+
+      res.status(200).json(databaseFormulir);
+    } catch (error) {
+      console.log(error, ">> search Database ByName controller");
       if (error.code && error.message) {
         res.status(error.code).json({ message: error.message });
       } else if (
