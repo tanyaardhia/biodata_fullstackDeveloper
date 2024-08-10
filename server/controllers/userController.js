@@ -16,6 +16,7 @@ class BiodataController {
         address_ktp,
         address_residence,
         email,
+        skill,
         no_telp,
         contact_emergency,
         willing_to_be_placed,
@@ -26,10 +27,10 @@ class BiodataController {
         workExperience = [],
       } = req.body;
 
-      console.log(req.user, "ID formulier");
-      
+      console.log(req.body, "ID formulier");
+
       const biodata = await Biodata.create({
-        userId : req.user.id,
+        userId: req.user.id,
         position,
         name,
         no_ktp,
@@ -37,6 +38,7 @@ class BiodataController {
         date_of_birth,
         gender,
         religion,
+        skill,
         blood_type,
         status,
         address_ktp,
@@ -49,7 +51,7 @@ class BiodataController {
         signature,
       });
 
-      console.log(biodata, ">> usercontrollers");
+      // console.log(biodata, ">> usercontrollers");
 
       if (education.length > 0) {
         await Education.bulkCreate(

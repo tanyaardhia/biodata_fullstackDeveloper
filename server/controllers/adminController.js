@@ -1,5 +1,5 @@
 const { Biodata, Education, Training, WorkExperience } = require("../models");
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
 
 class AdminController {
   static async AdminGetDatabase(req, res) {
@@ -87,6 +87,7 @@ class AdminController {
         religion,
         blood_type,
         status,
+        skill,
         address_ktp,
         address_residence,
         email,
@@ -116,6 +117,7 @@ class AdminController {
         birthPlace,
         date_of_birth,
         gender,
+        skill,
         religion,
         blood_type,
         status,
@@ -237,7 +239,6 @@ class AdminController {
           { model: WorkExperience },
         ],
       });
-      
 
       // console.log(databaseFormulir, ">> Search");
 
