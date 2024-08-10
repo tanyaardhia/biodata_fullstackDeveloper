@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       company_name: DataTypes.STRING,
       last_position: DataTypes.STRING,
       last_revenue: DataTypes.INTEGER,
-      year: DataTypes.DATE,
+      year: DataTypes.STRING,
       biodataId: DataTypes.INTEGER,
     },
     {

@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       year: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       biodataId: {
         type: Sequelize.INTEGER,

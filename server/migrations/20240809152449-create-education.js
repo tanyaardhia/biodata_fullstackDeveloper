@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       year_graduated: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       grade: {
         type: Sequelize.STRING,

@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       course_name: DataTypes.STRING,
       certificate: DataTypes.STRING,
-      year: DataTypes.DATE,
+      year: DataTypes.STRING,
       biodataId: DataTypes.INTEGER,
     },
     {
