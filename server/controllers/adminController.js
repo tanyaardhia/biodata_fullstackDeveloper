@@ -76,8 +76,6 @@ class AdminController {
   static async updateDatabaseById(req, res) {
     try {
       const { id } = req.params;
-      console.log(id, ">> update By Id dari admin controller");
-
       const {
         position,
         name,
@@ -101,8 +99,10 @@ class AdminController {
         workExperience = [],
       } = req.body;
 
+      // console.log(id, ">> update By Id dari admin controller");
+
       const biodata = await Biodata.findByPk(id);
-      console.log(biodata, ">> update");
+      // console.log(biodata, ">> Biodata yang ditemukan");
 
       if (!biodata) {
         throw { code: 404, message: "Database Not Found" };
@@ -128,34 +128,25 @@ class AdminController {
         signature,
       });
 
-      for (const edu of education) {
-        if (edu.id) {
-          const existingEdu = await Education.findByPk(edu.id);
-          if (existingEdu) {
-            await existingEdu.update({
-              level_of_education: edu.level_of_education,
-              name_institution: edu.name_institution,
-              major: edu.major,
-              year_graduated: edu.year_graduated,
-              grade: edu.grade,
-            });
-          }
-        } else {
-          await Education.create({
-            biodataId: id,
+      if (education.length > 0) {
+        await Education.destroy({ where: { biodataId: biodata.id } });
+        await Education.bulkCreate(
+          education.map((edu) => ({
+            biodataId: biodata.id,
             level_of_education: edu.level_of_education,
             name_institution: edu.name_institution,
             major: edu.major,
             year_graduated: edu.year_graduated,
             grade: edu.grade,
-          });
-        }
+          }))
+        );
       }
 
       if (training.length > 0) {
+        await Training.destroy({ where: { biodataId: biodata.id } });
         await Training.bulkCreate(
           training.map((train) => ({
-            biodataId: id,
+            biodataId: biodata.id,
             course_name: train.course_name,
             certificate: train.certificate,
             year: train.year,
@@ -164,9 +155,10 @@ class AdminController {
       }
 
       if (workExperience.length > 0) {
+        await WorkExperience.destroy({ where: { biodataId: biodata.id } });
         await WorkExperience.bulkCreate(
           workExperience.map((work) => ({
-            biodataId: id,
+            biodataId: biodata.id,
             company_name: work.company_name,
             last_position: work.last_position,
             last_revenue: work.last_revenue,
