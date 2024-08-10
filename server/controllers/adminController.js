@@ -6,13 +6,13 @@ class AdminController {
       const formulirDatabase = await Biodata.findAll({
         include: [
           {
-            model: Education
+            model: Education,
           },
           {
-            model: Training
+            model: Training,
           },
           {
-            model: WorkExperience
+            model: WorkExperience,
           },
         ],
       });
@@ -40,7 +40,19 @@ class AdminController {
       const { id } = req.params;
       console.log(id, ">> get Id dari Admin Controller");
 
-      const databaseById = await Biodata.findByPk(id);
+      const databaseById = await Biodata.findByPk(id, {
+        include: [
+          {
+            model: Education,
+          },
+          {
+            model: Training,
+          },
+          {
+            model: WorkExperience,
+          },
+        ],
+      });
 
       if (!databaseById) {
         throw { code: 404, message: "Database Not Found" };
