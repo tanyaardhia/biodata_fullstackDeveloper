@@ -3,7 +3,20 @@ const { Biodata, Education, Training, WorkExperience } = require("../models");
 class AdminController {
   static async AdminGetDatabase(req, res) {
     try {
-      const formulirDatabase = await Biodata.findAll();
+      const formulirDatabase = await Biodata.findAll({
+        include: [
+          {
+            model: Education
+          },
+          {
+            model: Training
+          },
+          {
+            model: WorkExperience
+          },
+        ],
+      });
+
       console.log(formulirDatabase, ">> get all dr admin controller");
 
       res.status(200).json(formulirDatabase);
