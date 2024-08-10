@@ -3,9 +3,7 @@ export default function Home() {
     <>
       <div>
         <h1>homepage</h1>
-        <a href="/login-user">LOGIN USER</a>
-        <br />
-        <a href="/login-admin">LOGIN Admin</a>
+        <a href="/login">LOGIN</a>
         <br />
         <a href="/register-user">register USER</a>
         <br />

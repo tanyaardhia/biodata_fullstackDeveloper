@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Form from "../components/Form";
 
-export default function LoginUser() {
+export default function Login() {
   const {
     register,
     handleSubmit,
@@ -44,6 +44,7 @@ export default function LoginUser() {
       onSubmit={onSubmit}
       errors={errors}
       isSubmitting={isSubmitting}
+      title="LOG IN"
     />
   );
 }
