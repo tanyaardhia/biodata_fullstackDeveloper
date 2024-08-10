@@ -123,7 +123,7 @@ export default function FormBiodata() {
                 id="gender"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
               >
-                <option value="">Select your gender</option>
+                <option value="">Select to Relocate</option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
               </select>
@@ -415,6 +415,228 @@ export default function FormBiodata() {
               </table>
             </div>
 
+            {/* training */}
+            <div className="mb-6">
+              <label
+                htmlFor="trainings"
+                className="block text-lg font-medium text-[#07074D] mb-2"
+              >
+                Training / Course
+              </label>
+              <table className="w-full border border-[#e0e0e0]">
+                <thead>
+                  <tr>
+                    <th className="border border-[#e0e0e0] py-2 px-4 text-center">
+                      Course Name
+                    </th>
+                    <th className="border border-[#e0e0e0] py-2 px-4 text-center">
+                      Certificate
+                    </th>
+                    <th className="border border-[#e0e0e0] py-2 px-4 text-center">
+                      Year
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-[#e0e0e0] py-2 px-4">
+                      <input
+                        type="text"
+                        name="course_name"
+                        id="course_name"
+                        placeholder="Course Name"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+                      />
+                      <input
+                        type="text"
+                        name="course_name"
+                        id="course_name"
+                        placeholder="Course Name"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                      <input
+                        type="text"
+                        name="course_name"
+                        id="course_name"
+                        placeholder="Course Name"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                    </td>
+                    <td className="border border-[#e0e0e0] py-2 px-4">
+                      <input
+                        type="text"
+                        name="certificate"
+                        id="certificate"
+                        placeholder="Certificate"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+                      />
+                      <input
+                        type="text"
+                        name="certificate"
+                        id="certificate"
+                        placeholder="Certificate"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                      <input
+                        type="text"
+                        name="certificate"
+                        id="certificate"
+                        placeholder="Certificate"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                    </td>
+                    <td className="border border-[#e0e0e0] py-2 px-4">
+                      <input
+                        type="text"
+                        name="year"
+                        id="year"
+                        placeholder="Year"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+                      />
+                      <input
+                        type="text"
+                        name="year"
+                        id="year"
+                        placeholder="Year"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                      <input
+                        type="text"
+                        name="year"
+                        id="year"
+                        placeholder="Year"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* work experience */}
+            <div className="mb-6">
+              <label
+                htmlFor="workExperience"
+                className="block text-lg font-medium text-[#07074D] mb-2"
+              >
+                Work Experience
+              </label>
+              <table className="w-full border border-[#e0e0e0]">
+                <thead>
+                  <tr>
+                    <th className="border border-[#e0e0e0] py-2 px-4 text-center">
+                      Company Name
+                    </th>
+                    <th className="border border-[#e0e0e0] py-2 px-4 text-center">
+                      Last Position
+                    </th>
+                    <th className="border border-[#e0e0e0] py-2 px-4 text-center">
+                      Last Revenue
+                    </th>
+                    <th className="border border-[#e0e0e0] py-2 px-4 text-center">
+                      Year
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-[#e0e0e0] py-2 px-4">
+                      <input
+                        type="text"
+                        name="company_name"
+                        id="company_name"
+                        placeholder="Company Name"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+                      />
+                      <input
+                        type="text"
+                        name="company_name"
+                        id="company_name"
+                        placeholder="Company Name"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                      <input
+                        type="text"
+                        name="company_name"
+                        id="company_name"
+                        placeholder="Company Name"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                    </td>
+                    <td className="border border-[#e0e0e0] py-2 px-4">
+                      <input
+                        type="text"
+                        name="last_position"
+                        id="last_position"
+                        placeholder="Last Position"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+                      />
+                      <input
+                        type="text"
+                        name="last_position"
+                        id="last_position"
+                        placeholder="Last Position"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                      <input
+                        type="text"
+                        name="last_position"
+                        id="last_position"
+                        placeholder="Last Position"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                    </td>
+                    <td className="border border-[#e0e0e0] py-2 px-4">
+                      <input
+                        type="text"
+                        name="last_revenue"
+                        id="last_revenue"
+                        placeholder="Last Revenue"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+                      />
+                      <input
+                        type="text"
+                        name="last_revenue"
+                        id="last_revenue"
+                        placeholder="Last Revenue"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                      <input
+                        type="text"
+                        name="last_revenue"
+                        id="last_revenue"
+                        placeholder="Last Revenue"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                    </td>
+                    <td className="border border-[#e0e0e0] py-2 px-4">
+                      <input
+                        type="text"
+                        name="year"
+                        id="year"
+                        placeholder="Year"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+                      />
+                      <input
+                        type="text"
+                        name="year"
+                        id="year"
+                        placeholder="Year"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                      <input
+                        type="text"
+                        name="year"
+                        id="year"
+                        placeholder="Year"
+                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1] mt-3"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             {/* expected salary */}
             <div className="mb-6">
               <label
@@ -430,6 +652,42 @@ export default function FormBiodata() {
                 placeholder="Enter your Expected Salary"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
               />
+            </div>
+
+            {/* skill */}
+            <div className="mb-6">
+              <label
+                htmlFor="skill"
+                className="block text-lg font-medium text-[#07074D] mb-2"
+              >
+                Skills
+              </label>
+              <textarea
+                name="skill"
+                id="skill"
+                placeholder="write down your expertise and the skills you currently have"
+                rows="4"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+              ></textarea>
+            </div>
+
+            {/* willing_to_be_placed */}
+            <div className="mb-6">
+              <label
+                htmlFor="willing_to_be_placed"
+                className="block text-lg font-medium text-[#07074D] mb-2"
+              >
+                Willing to Relocated
+              </label>
+              <select
+                name="willing_to_be_placed"
+                id="willing_to_be_placed"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:ring-2 focus:ring-[#6A64F1]"
+              >
+                <option value="">Select to Relocated</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
             </div>
 
             {/* signature */}
