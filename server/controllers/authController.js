@@ -96,7 +96,7 @@ class AuthContoller {
 
       const payload = { id: dataLogin.id };
       const access_token = createToken(payload);
-      res.status(200).json({ access_token: access_token, role: dataLogin.role });
+      res.status(200).json({ access_token: access_token, role: dataLogin.role, id: dataLogin.id });
     } catch (error) {
       console.log(error, ">> regis controller");
       if (error.code && error.message) {
