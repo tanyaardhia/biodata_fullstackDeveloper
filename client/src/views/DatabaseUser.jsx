@@ -53,11 +53,10 @@ export default function DatabaseUser() {
 
   return (
     <>
-      <Sidebar />
       <div className="p-4 sm:ml-64">
         <div className="flex flex-col md:flex-row justify-between items-center p-4">
           <h1 className="font-bold text-xl mb-4 md:mb-0">
-            List of Employee Forms
+            List of Candidate Forms
           </h1>
           <div className="relative max-w-md w-full">
             <label
