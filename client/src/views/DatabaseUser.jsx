@@ -6,9 +6,10 @@ import axios from "axios";
 
 export default function DatabaseUser() {
   const [users, setUsers] = useState([]);
+  const [searchName, setSearchName] = useState("");
   const navigate = useNavigate();
 
-  const fetchData = async (setUsers) => {
+  const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3000/admin/database", {
         headers: {
@@ -16,15 +17,14 @@ export default function DatabaseUser() {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       });
-      console.log(response,">>>>>>>>>>>>>>>");
-      
+      console.log(response, ">>>>>>>>>>>>>>>");
+
       setUsers(response.data);
     } catch (error) {
-      console.log(">>>Er");
-      if (error.response && error.response.status == 403) {
+      if (error.response && error.response.status === 403) {
         navigate("/form-biodata");
       }
-      
+
       console.error("There was an error fetching the data!", error);
     }
   };
@@ -45,18 +45,18 @@ export default function DatabaseUser() {
       });
       setUsers(users.filter((user) => user.id !== userId));
     } catch (error) {
-      console.error("There was an error deleting the user!", error);
+      console.error("error deleting the user", error);
     }
   };
 
   useEffect(() => {
-    // const role = localStorage.getItem("role");
-    // if (role !== "admin") {
-    //   navigate("/login");
-    // } else {
-    fetchData(setUsers);
-    // }
+    fetchData();
   }, []);
+
+  // Filter pengguna berdasarkan search query
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchName.toLowerCase())
+  );
 
   return (
     <>
@@ -77,15 +77,11 @@ export default function DatabaseUser() {
                 type="search"
                 id="default-search"
                 className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search..."
+                placeholder="Search by name..."
+                value={searchName}
+                onChange={(e) => setSearchName(e.target.value)}
                 required
               />
-              <button
-                type="submit"
-                className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Search
-              </button>
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -111,12 +107,12 @@ export default function DatabaseUser() {
           <Table striped>
             <Table.Head>
               <Table.HeadCell>Name</Table.HeadCell>
-              <Table.HeadCell>place date of birth</Table.HeadCell>
-              <Table.HeadCell>position</Table.HeadCell>
+              <Table.HeadCell>Place Date of Birth</Table.HeadCell>
+              <Table.HeadCell>Position</Table.HeadCell>
               <Table.HeadCell>Action</Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
-              {users.map((user) => (
+              {filteredUsers.map((user) => (
                 <Table.Row
                   key={user.id}
                   className="bg-white dark:border-gray-700 dark:bg-gray-800"
