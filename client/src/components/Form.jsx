@@ -84,7 +84,7 @@ export default function Form({
                   Don't have an account?
                   <a
                     className="group text-blue-400 transition-all duration-100 ease-in-out ml-1"
-                    href={title === "LOG IN" ? "/register" : "/login"}
+                    href={title === "LOG IN" ? "/register-user" : "/login"}
                   >
                     <span className="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
                       {title === "LOG IN" ? "Sign Up" : "LOG IN"}
