@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import DetailForm from "../components/DetailForm";
 
@@ -48,10 +48,14 @@ export default function DataById() {
     <>
       <div className="p-4 sm:ml-64">
         <button className="btn btn-primary rounded-3xl text-white justify-end">
-          Edit
+          <Link to={`/admin/database/edit/${id}`}>Edit</Link>
         </button>
 
-        <DetailForm userData={userData} formatDate={formatDate} formatCurrency={formatCurrency} />
+        <DetailForm
+          userData={userData}
+          formatDate={formatDate}
+          formatCurrency={formatCurrency}
+        />
       </div>
     </>
   );

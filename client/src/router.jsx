@@ -7,6 +7,7 @@ import FormBiodata from "./views/FormBiodata";
 import DatabaseUser from "./views/DatabaseUser";
 import DataById from "./views/DataById";
 import Layout from "./views/Layout";
+import EditByIdAdmin from "./views/EditById-admin";
 
 export const router = createBrowserRouter([
   {
@@ -31,16 +32,20 @@ export const router = createBrowserRouter([
   },
 
   {
-    element: <Layout/>,
+    element: <Layout />,
     children: [
-  {
-    path: "/admin/database",
-    element: <DatabaseUser />,
+      {
+        path: "/admin/database",
+        element: <DatabaseUser />,
+      },
+      {
+        path: "/admin/database/:id",
+        element: <DataById />,
+      },
+      {
+        path: "/admin/database/edit/:id",
+        element: < EditByIdAdmin/>
+      }
+    ],
   },
-  {
-    path: "/admin/database/:id",
-    element: <DataById />,
-  },
-    ]
-  }
 ]);
