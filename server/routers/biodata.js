@@ -3,6 +3,7 @@ const BiodataController = require("../controllers/userController");
 const biodata = express.Router();
 
 biodata.post("/form-biodata", BiodataController.FormulirKaryawan);
-biodata.get("/myBiodata/:biodataId", BiodataController.GetBiodataUserById)
+biodata.get("/my-data", BiodataController.GetDatabase);
+biodata.get("/my-data/formulir/:biodataId", BiodataController.GetBiodataUserById);
 
 module.exports = biodata;

@@ -128,6 +128,32 @@ class BiodataController {
       next(error);
     }
   }
+
+  static async GetDatabase(req, res, next) {
+    try {
+      const userId = req.user.id;
+      const formulirDatabase = await Biodata.findAll({
+        where: { userId: userId },
+        include: [
+          {
+            model: Education,
+          },
+          {
+            model: Training,
+          },
+          {
+            model: WorkExperience,
+          },
+        ],
+      });
+      // console.log(formulirDatabase, ">> get all dr user controller");
+
+      res.status(200).json(formulirDatabase);
+    } catch (error) {
+      console.log(error, ">> GetDatabase controller");
+      next();
+    }
+  }
 }
 
 module.exports = BiodataController;
