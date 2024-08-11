@@ -31,16 +31,16 @@ export const router = createBrowserRouter([
   },
 
   {
-    element: <Layout />,
+    element: <Layout/>,
     children: [
-      {
-        path: "/admin/database",
-        element: <DatabaseUser />,
-      },
-      {
-        path: "/admin/database/:id",
-        element: <DataById />,
-      },
-    ],
+  {
+    path: "/admin/database",
+    element: <DatabaseUser />,
   },
+  {
+    path: "/admin/database/:id",
+    element: <DataById />,
+  },
+    ]
+  }
 ]);

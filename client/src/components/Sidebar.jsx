@@ -1,4 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 export function Sidebar() {
+  const router = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('id');
+    localStorage.removeItem('role');
+    localStorage.removeItem('access_token');
+    router.push('/login');
+  };
   return (
     <>
       <button
@@ -38,7 +48,7 @@ export function Sidebar() {
           <ul className="space-y-2 font-medium">
             <li>
               <a
-                href="#"
+                href="/admin/database"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -59,10 +69,9 @@ export function Sidebar() {
                 <span className="ms-3">Dashboard</span>
               </a>
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            <li><a
+                onClick={handleLogout}
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +87,6 @@ export function Sidebar() {
                     d="M22 10.5h-6m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM4 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 10.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
                   />
                 </svg>
-
                 <span className="ms-3">Logout</span>
               </a>
             </li>
