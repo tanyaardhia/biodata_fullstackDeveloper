@@ -420,7 +420,7 @@ export default function Form_biodata({
               >
                 Education{" "}
                 <span className="text-sm italic text-slate-400">
-                  (if you don't have any, please field "NONE")
+                  (if you don't have any, please field "0")
                 </span>
               </label>
               <table className="w-full border border-[#e0e0e0]">
@@ -520,7 +520,7 @@ export default function Form_biodata({
               >
                 Training / Course{" "}
                 <span className="text-sm italic text-slate-400">
-                  (if you don't have any, please field "NONE")
+                  (if you don't have any, please field "0")
                 </span>
               </label>
               <table className="w-full border border-[#e0e0e0]">
@@ -598,7 +598,7 @@ export default function Form_biodata({
               >
                 Work Experience{" "}
                 <span className="text-sm italic text-slate-400">
-                  (if you don't have any, please field "NONE")
+                  (if you don't have any, please field "0")
                 </span>
               </label>
               <table className="w-full border border-[#e0e0e0]">

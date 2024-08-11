@@ -11,6 +11,7 @@ export default function FormBiodata() {
   const {
     register,
     control,
+    reset,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -82,8 +83,7 @@ export default function FormBiodata() {
         detail: "Successfully submitted Formulir!",
         life: 3000,
       });
-
-      
+      reset();
     } catch (error) {
       console.error(
         "error formulir >>",
