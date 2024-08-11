@@ -97,14 +97,14 @@ class BiodataController {
 
   static async GetBiodataUserById(req, res, next) {
     try {
-      const { id } = req.params;
-      console.log(id, "biodata user by id");
+      const { biodataId } = req.params;
+      console.log(biodataId, ">>>>>>>>>. biodata user by id");
 
       if (!req.user || !req.user.id) {
         throw { code: 401, message: "Unauthorized" };
       }
 
-      const databaseById = await Biodata.findByPk(id, {
+      const databaseById = await Biodata.findByPk(biodataId, {
         include: [
           { model: Education },
           { model: Training },
