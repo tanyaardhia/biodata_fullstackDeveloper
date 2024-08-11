@@ -752,8 +752,8 @@ export default function Form_biodata({
                 }`}
               >
                 <option value="">Select to Relocated</option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
               </select>
               {errors.willing_to_be_placed && (
                 <p className="text-red-500 mt-1 text-sm italic">
