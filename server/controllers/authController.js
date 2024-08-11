@@ -3,7 +3,7 @@ const { createToken } = require("../helpers/jwt");
 const { User } = require("../models");
 
 class AuthContoller {
-  static async UserRegister(req, res) {
+  static async UserRegister(req, res, next) {
     try {
       const { email, password } = req.body;
       console.log("masuk regis");
@@ -23,20 +23,11 @@ class AuthContoller {
       });
     } catch (error) {
       console.log(error, ">> regis controller");
-      if (error.code && error.message) {
-        res.status(error.code).json({ message: error.message });
-      } else if (
-        error.name === "SequelizeUniqueConstraintError" ||
-        error.name === "SequelizeValidationError"
-      ) {
-        res.status(400).json({ message: error.errors[0].message });
-      } else {
-        res.status(500).json({ message: "Internal server error" });
-      }
+      next(error);
     }
   }
 
-  static async AdminRegister(req, res) {
+  static async AdminRegister(req, res, next) {
     try {
       const { email, password } = req.body;
       console.log("masuk regis");
@@ -56,23 +47,14 @@ class AuthContoller {
       });
     } catch (error) {
       console.log(error, ">> regis controller");
-      if (error.code && error.message) {
-        res.status(error.code).json({ message: error.message });
-      } else if (
-        error.name === "SequelizeUniqueConstraintError" ||
-        error.name === "SequelizeValidationError"
-      ) {
-        res.status(400).json({ message: error.errors[0].message });
-      } else {
-        res.status(500).json({ message: "Internal server error" });
-      }
+      next(error);
     }
   }
 
-  static async login(req, res) {
+  static async login(req, res, next) {
     try {
       const { email, password } = req.body;
-      console.log("masuk login");
+      // console.log("masuk login");
 
       if (!email) {
         throw { code: 400, message: "Email is required" };
@@ -87,7 +69,7 @@ class AuthContoller {
         throw { code: 401, message: "Invalid email or password" };
       }
 
-      console.log(dataLogin, "data login controller");
+      // console.log(dataLogin, "data login controller");
 
       const comparedPassword = comparePassword(password, dataLogin.password);
       if (!comparedPassword) {
@@ -99,16 +81,7 @@ class AuthContoller {
       res.status(200).json({ access_token: access_token, role: dataLogin.role, id: dataLogin.id });
     } catch (error) {
       console.log(error, ">> regis controller");
-      if (error.code && error.message) {
-        res.status(error.code).json({ message: error.message });
-      } else if (
-        error.name === "SequelizeUniqueConstraintError" ||
-        error.name === "SequelizeValidationError"
-      ) {
-        res.status(400).json({ message: error.errors[0].message });
-      } else {
-        res.status(500).json({ message: "Internal server error" });
-      }
+      next(error);
     }
   }
 }

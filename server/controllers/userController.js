@@ -1,7 +1,7 @@
 const { Biodata, Education, Training, WorkExperience } = require("../models");
 
 class BiodataController {
-  static async FormulirKaryawan(req, res) {
+  static async FormulirKaryawan(req, res, next) {
     try {
       const {
         position,
@@ -91,17 +91,7 @@ class BiodataController {
 
       res.status(201).json({ message: "form successfully created!" });
     } catch (error) {
-      console.log(error, ">> FormulirKaryawan controller");
-      if (error.code && error.message) {
-        res.status(error.code).json({ message: error.message });
-      } else if (
-        error.name === "SequelizeUniqueConstraintError" ||
-        error.name === "SequelizeValidationError"
-      ) {
-        res.status(400).json({ message: error.errors[0].message });
-      } else {
-        res.status(500).json({ message: "Internal server error" });
-      }
+      next(error);
     }
   }
 }

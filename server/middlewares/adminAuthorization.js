@@ -3,15 +3,15 @@ async function adminAuthorization(req, res, next) {
     console.log(req.user, ">>> loginya apa?");
 
     if (req.user && req.user.role === "admin") {
-      console.log(req.user, "=== role nih");
+      // console.log(req.user, "=== role nih");
       next();
     } else {
-      console.log(">> role is not Admin");
-      throw { message: "Forbidden" };
+      // console.log(">> role is not Admin");
+      throw { status: 403, message: "You are not authorized" };
     }
   } catch (error) {
-    console.log(error, "Admin authorization error");
-    res.status(500).json({ message: "Internal server error" });
+    // console.log(error, "Admin authorization error");
+    next(error);
   }
 }
 
