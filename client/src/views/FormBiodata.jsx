@@ -4,6 +4,8 @@ import Form_biodata from "../components/Form_biodata";
 import { useFieldArray, useForm } from "react-hook-form";
 import axios from "axios";
 import { Toast } from "primereact/toast";
+import { Sidebar } from "../components/Sidebar";
+import { SidebarUser } from "../components/SidebarUser";
 
 export default function FormBiodata() {
   const toast = useRef(null);
@@ -109,23 +111,26 @@ export default function FormBiodata() {
     <>
       {" "}
       <Toast ref={toast} />
-      <Form_biodata
-        register={register}
-        control={control}
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-        errors={errors}
-        isSubmitting={isSubmitting}
-        educationFields={educationFields}
-        appendEducation={appendEducation}
-        removeEducation={removeEducation}
-        trainingFields={trainingFields}
-        appendTraining={appendTraining}
-        removeTraining={removeTraining}
-        workFields={workFields}
-        appendWork={appendWork}
-        removeWork={removeWork}
-      />
+      <SidebarUser/>
+      <div className="p-4 sm:ml-64">
+        <Form_biodata
+          register={register}
+          control={control}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+          errors={errors}
+          isSubmitting={isSubmitting}
+          educationFields={educationFields}
+          appendEducation={appendEducation}
+          removeEducation={removeEducation}
+          trainingFields={trainingFields}
+          appendTraining={appendTraining}
+          removeTraining={removeTraining}
+          workFields={workFields}
+          appendWork={appendWork}
+          removeWork={removeWork}
+        />
+      </div>
     </>
   );
 }

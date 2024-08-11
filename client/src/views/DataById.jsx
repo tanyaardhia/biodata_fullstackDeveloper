@@ -6,22 +6,30 @@ import DetailForm from "../components/DetailForm";
 export default function DataById() {
   const { id } = useParams();
   const [userData, setUserData] = useState({});
+  const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/admin/database/${id}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-            },
-          }
-        );
+        const role = localStorage.getItem("role");
+        setUserRole(role);
+
+        const endpoint =
+          role === "admin"
+            ? `http://localhost:3000/admin/database/${id}`
+            : `http://localhost:3000/my-data/formulir/${id}`;
+
+        const response = await axios.get(endpoint, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        });
+        console.log(response.data, "?????????????data");
+
         setUserData(response.data);
       } catch (error) {
-        console.error("There was an error fetching the data!", error);
+        console.error("error fetching the data!", error);
       }
     };
 
@@ -45,18 +53,18 @@ export default function DataById() {
   };
 
   return (
-    <>
-      <div className="p-4 sm:ml-64">
+    <div className="p-4 sm:ml-64">
+      {userRole === "admin" && (
         <button className="btn btn-primary rounded-3xl text-white justify-end">
           <Link to={`/admin/database/edit/${id}`}>Edit</Link>
         </button>
+      )}
 
-        <DetailForm
-          userData={userData}
-          formatDate={formatDate}
-          formatCurrency={formatCurrency}
-        />
-      </div>
-    </>
+      <DetailForm
+        userData={userData}
+        formatDate={formatDate}
+        formatCurrency={formatCurrency}
+      />
+    </div>
   );
 }

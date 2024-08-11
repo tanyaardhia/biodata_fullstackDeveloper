@@ -24,8 +24,9 @@ export default function Login() {
           password: data.password,
         }
       );
-      console.log("login successful >>", responseLoginUser.data);
-      console.log("id >>", responseLoginUser.data.id);
+      // console.log("login successful >>", responseLoginUser.data);
+      // console.log("id >>", responseLoginUser.data.id);
+      console.log("User type on login:", responseLoginUser.data.role);
 
       // console.log("access_token >>", responseLoginUser.data.access_token);
       localStorage.setItem("access_token", responseLoginUser.data.access_token);
@@ -50,7 +51,7 @@ export default function Login() {
       errors={errors}
       isSubmitting={isSubmitting}
       subTitle="welcome back"
-      title="LOG IN"
+      title="LOG IN" userType="admin" 
     />
   );
 }

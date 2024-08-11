@@ -1,5 +1,3 @@
-import ButtonLogout from "./ButtonLogout";
-
 export default function Form_biodata({
   register,
   handleSubmit,
@@ -17,9 +15,15 @@ export default function Form_biodata({
   removeWork,
   showSuccess,
 }) {
+  // const { biodataId } = useParams();
+  // console.log(biodataId, ">>> form_biodata");
+  
   return (
     <>
-    < ButtonLogout/>
+      <div className="flex flex-row">
+        {/* <MyData biodataId={biodataId} /> */}
+      </div>
+
       <div className="flex flex-col items-center mt-10">
         <img
           src="/logo.png"

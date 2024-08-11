@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Sidebar } from "../components/Sidebar";
 import { Table } from "flowbite-react";
 import axios from "axios";
+import { SidebarUser } from "../components/SidebarUser";
 
-export default function DatabaseUser() {
+export default function MyDataUser() {
   const [users, setUsers] = useState([]);
   const [searchCandidate, setSearchCandidate] = useState("");
   const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/admin/database", {
+      const response = await axios.get("http://localhost:3000/my-data", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       });
-      console.log(response, ">>>>>>>>>>>>>>>");
+      console.log(response, ">>>>>>>>???????????");
 
       setUsers(response.data);
     } catch (error) {
@@ -35,20 +35,6 @@ export default function DatabaseUser() {
     return new Intl.DateTimeFormat("id-ID", options).format(date);
   };
 
-  const handleDelete = async (userId) => {
-    try {
-      await axios.delete(`http://localhost:3000/admin/database/${userId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      });
-      setUsers(users.filter((user) => user.id !== userId));
-    } catch (error) {
-      console.error("error deleting the user", error);
-    }
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -61,11 +47,10 @@ export default function DatabaseUser() {
 
   return (
     <>
+      <SidebarUser />
       <div className="p-4 sm:ml-64">
         <div className="flex flex-col md:flex-row justify-between items-center p-4">
-          <h1 className="font-bold text-xl mb-4 md:mb-0">
-            List of Candidate Forms
-          </h1>
+          <h1 className="font-bold text-xl mb-4 md:mb-0">My Data</h1>
           <div className="relative max-w-md w-full">
             <label
               htmlFor="default-search"
@@ -132,12 +117,6 @@ export default function DatabaseUser() {
                     >
                       View
                     </Link>
-                    <button
-                      onClick={() => handleDelete(user.id)}
-                      className="font-medium text-red-600 hover:underline dark:text-red-500"
-                    >
-                      Delete
-                    </button>
                   </Table.Cell>
                 </Table.Row>
               ))}

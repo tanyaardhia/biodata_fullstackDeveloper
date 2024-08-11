@@ -8,6 +8,8 @@ import DatabaseUser from "./views/DatabaseUser";
 import DataById from "./views/DataById";
 import Layout from "./views/Layout";
 import EditByIdAdmin from "./views/EditById-admin";
+import MyBiodata from "./views/MyBiodata";
+import MyDataUser from "./views/MyDataUser";
 
 export const router = createBrowserRouter([
   {
@@ -16,14 +18,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "/register-user",
-    loader: () =>
-      localStorage.getItem("access_token") && redirect("/login"),
+    loader: () => localStorage.getItem("access_token") && redirect("/login"),
     element: <RegisterUser />,
   },
   {
     path: "/register-admin",
-    loader: () =>
-      localStorage.getItem("access_token") && redirect("/login"),
+    loader: () => localStorage.getItem("access_token") && redirect("/login"),
     element: <RegisterAdmin />,
   },
   {
@@ -36,10 +36,18 @@ export const router = createBrowserRouter([
     path: "/form-biodata",
     element: <FormBiodata />,
   },
-
+  {
+    path: "/list/myBiodata",
+    element: <MyDataUser />,
+  },
+  {
+    path: "/myBiodata/:biodataId",
+    element: <MyBiodata />,
+  },
   {
     element: <Layout />,
-    loader: () => !localStorage.getItem("access_token") && redirect("/admin/database"),
+    loader: () =>
+      !localStorage.getItem("access_token") && redirect("/admin/database"),
     children: [
       {
         path: "/admin/database",
