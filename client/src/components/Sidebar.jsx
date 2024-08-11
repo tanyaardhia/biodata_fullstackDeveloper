@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
 export function Sidebar() {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('id');
     localStorage.removeItem('role');
     localStorage.removeItem('access_token');
-    router.push('/login');
+    navigate('/login');
   };
   return (
     <>

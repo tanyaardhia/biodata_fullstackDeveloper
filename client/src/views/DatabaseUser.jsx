@@ -16,8 +16,15 @@ export default function DatabaseUser() {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
       });
+      console.log(response,">>>>>>>>>>>>>>>");
+      
       setUsers(response.data);
     } catch (error) {
+      console.log(">>>Er");
+      if (error.response && error.response.status == 403) {
+        navigate("/form-biodata");
+      }
+      
       console.error("There was an error fetching the data!", error);
     }
   };
@@ -43,13 +50,13 @@ export default function DatabaseUser() {
   };
 
   useEffect(() => {
-    const role = localStorage.getItem("role");
-    if (role !== "admin") {
-      navigate("/login");
-    } else {
-      fetchData(setUsers);
-    }
-  }, [navigate]);
+    // const role = localStorage.getItem("role");
+    // if (role !== "admin") {
+    //   navigate("/login");
+    // } else {
+    fetchData(setUsers);
+    // }
+  }, []);
 
   return (
     <>

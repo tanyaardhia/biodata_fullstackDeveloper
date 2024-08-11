@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import RegisterUser from "./views/Register-user";
@@ -16,14 +16,20 @@ export const router = createBrowserRouter([
   },
   {
     path: "/register-user",
+    loader: () =>
+      localStorage.getItem("access_token") && redirect("/login"),
     element: <RegisterUser />,
   },
   {
     path: "/register-admin",
+    loader: () =>
+      localStorage.getItem("access_token") && redirect("/login"),
     element: <RegisterAdmin />,
   },
   {
     path: "/login",
+    loader: () =>
+      localStorage.getItem("access_token") && redirect("/admin/database"),
     element: <Login />,
   },
   {
@@ -33,6 +39,7 @@ export const router = createBrowserRouter([
 
   {
     element: <Layout />,
+    loader: () => !localStorage.getItem("access_token") && redirect("/admin/database"),
     children: [
       {
         path: "/admin/database",
@@ -44,8 +51,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin/database/edit/:id",
-        element: < EditByIdAdmin/>
-      }
+        element: <EditByIdAdmin />,
+      },
     ],
   },
 ]);

@@ -98,12 +98,12 @@ export default function FormBiodata() {
     }
   };
 
-  useEffect(() => {
-    const role = localStorage.getItem("role");
-    if (role !== "user") {
-      navigate("/login");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const role = localStorage.getItem("role");
+  //   if (role !== "user") {
+  //     navigate("/login");
+  //   }
+  // }, [role]);
 
   return (
     <>
