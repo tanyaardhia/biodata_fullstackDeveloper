@@ -94,6 +94,40 @@ class BiodataController {
       next(error);
     }
   }
+
+  static async GetBiodataUserById(req, res, next) {
+    try {
+      const { id } = req.params;
+      console.log(id, "biodata user by id");
+
+      if (!req.user || !req.user.id) {
+        throw { code: 401, message: "Unauthorized" };
+      }
+
+      const databaseById = await Biodata.findByPk(id, {
+        include: [
+          { model: Education },
+          { model: Training },
+          { model: WorkExperience },
+        ],
+      });
+
+      if (!databaseById) {
+        throw { code: 404, message: "Database Not Found" };
+      }
+
+      if (req.user.id !== databaseById.userId) {
+        throw { code: 403, message: "Forbidden" };
+      }
+
+      res
+        .status(200)
+        .json({ biodata_id: databaseById.id, biodata: databaseById });
+    } catch (error) {
+      console.log(error, ">> get biodata id user");
+      next(error);
+    }
+  }
 }
 
 module.exports = BiodataController;
